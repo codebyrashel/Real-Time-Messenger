@@ -5,10 +5,12 @@ import cors from "cors";
 import { Env } from "./config/env.config";
 import { asyncHandler } from "./middlewares/asyncHandler.middleware";
 import { HTTPSTATUS } from "./config/http.config";
+import { errorHandler } from "./middlewares/errorHandler.middleware";
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(errorHandler);
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
